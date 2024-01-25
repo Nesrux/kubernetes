@@ -1,10 +1,16 @@
 apiVersion: v1
-kind: pod
+kind: Pod
 metadata:
-  name: "goserver"
+  name: goserver
   labels:
-    app: "goserver"
+    name: goserver
 spec:
   containers:
-    - name: goserver
-      image: nesrux/goserver
+  - name: myapp
+    image: nesrux/goserver
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+     - containerPort: 8080 
