@@ -6,7 +6,7 @@ metadata:
     name: goserver
 spec:
   containers:
-  - name: myapp
+  - name: goserver
     image: nesrux/goserver
     resources:
       limits:
