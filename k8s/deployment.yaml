@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goserver
+  labels:
+    app: goserver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: goserver
+  template:
+    metadata:
+      labels:
+        app: "goserver"
+    spec:
+      containers:
+        - name: goserver
+          image: "nesrux/goserver"
+          
+# Hierarquia do kubenertenes deployment -> replicaset -> pod
+#se eu mudar quaulquer coisa em deploiment, ele automaticamente gera uma nova
+# replicaset que por sua vez gera novos pods
