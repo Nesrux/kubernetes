@@ -40,3 +40,9 @@ fazer um bind de portas de um pod da minha maquina para o kubernets/kind
 ```
 kubectl port-forward pod/goserver <aporta que eu quero acessar>:<porta exportada>
 ```
+
+ver histórico do deplayment, mudando o comando de deployment para pod ou replicaset
+o efeito é o mesmo
+```
+kubectl rollout history deployment <nome do deployment>
+```
