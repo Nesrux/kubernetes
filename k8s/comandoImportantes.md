@@ -42,7 +42,16 @@ kubectl port-forward pod/goserver <aporta que eu quero acessar>:<porta exportada
 ```
 
 ver histórico do deplayment, mudando o comando de deployment para pod ou replicaset
-o efeito é o mesmo
+o efeito é o mesmo, mostra as revisões 
 ```
 kubectl rollout history deployment <nome do deployment>
+```
+
+voltar para ultima versão do deployment, obs quando vc atualiza o deploymente ele nao 
+apaga, ele só para de executar, então é possivel fazer o comando de volta, para fazer o teste
+o comando é `kubectl get replicaset`, e da para ver as versoes, a tag `--to-revision`
+serve para definir qual revisão eu quero ir
+
+```
+kubectl rollout undo deployment goserver --to-revision= <numero da revisao>
 ```
