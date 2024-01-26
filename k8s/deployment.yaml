@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "nesrux/goserver:v2"
+          image: "nesrux/goserver:v3"
 
 # Hierarquia do kubenertenes deployment -> replicaset -> pod
 #se eu mudar quaulquer coisa em deploiment, ele automaticamente gera uma nova
