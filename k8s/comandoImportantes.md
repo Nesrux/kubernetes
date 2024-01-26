@@ -55,3 +55,10 @@ serve para definir qual revisão eu quero ir
 ```
 kubectl rollout undo deployment goserver --to-revision= <numero da revisao>
 ```
+
+a titulo de curiosidade, para poder enchergar a api do kubernetes pois ela normalmente
+nao é publica, e só pode ser acessada pelo `kubectl`, é possivel utilizar o comando abaixo
+e depois é só fazer uma requisição get para a porta apontada no localhost
+```
+kubectl proxy --port=8080
+```
