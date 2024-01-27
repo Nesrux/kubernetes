@@ -17,11 +17,22 @@ spec:
       containers:
         - name: goserver
           image: "nesrux/goserver:v4"
+          resources:
+           limits:
+            memory: "128Mi"
+            cpu: "500m"
           env:
             - name: NAME
-              value: "Jaumm"
+              valueFrom:
+                configMapKeyRef:
+                  name: goserver-env
+                  key: NAME
             - name: AGE
-              value: "22"
+              valueFrom:
+                configMapKeyRef:
+                  name: goserver-env
+                  key: AGE
+      
 # Hierarquia do kubenertenes deployment -> replicaset -> pod
 #se eu mudar quaulquer coisa em deploiment, ele automaticamente gera uma nova
 # replicaset que por sua vez gera novos pods
