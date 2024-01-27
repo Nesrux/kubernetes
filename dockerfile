@@ -3,4 +3,4 @@ WORKDIR /server
 COPY . .
 RUN go build -o server .
 CMD [ "./server"]
-EXPOSE 8080
+EXPOSE 8000
