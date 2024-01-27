@@ -5,7 +5,7 @@ metadata:
   labels:
     app: goserver
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: goserver
@@ -16,8 +16,12 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "nesrux/goserver:v3"
-
+          image: "nesrux/goserver:v4"
+          env:
+            - name: NAME
+              value: "Jaumm"
+            - name: AGE
+              value: "22"
 # Hierarquia do kubenertenes deployment -> replicaset -> pod
 #se eu mudar quaulquer coisa em deploiment, ele automaticamente gera uma nova
 # replicaset que por sua vez gera novos pods
