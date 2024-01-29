@@ -9,9 +9,10 @@ import (
 )
 
 func main() {
+
 	http.HandleFunc("/", Hello)
 	http.HandleFunc("/configMap", configMap)
-
+	http.HandleFunc("/secret", secret)
 	http.ListenAndServe(":8000", nil)
 
 }
@@ -27,4 +28,9 @@ func configMap(w http.ResponseWriter, r *http.Request) {
 		log.Fatalf("Erro ao ler o arquivo: ", err)
 	}
 	fmt.Fprintf(w, "minha familia %s.", string(data))
+}
+func secret(w http.ResponseWriter, r *http.Request) {
+	user := os.Getenv("USER")
+	pass := os.Getenv("PASS")
+	fmt.Fprintf(w, "USER : %s. -- PASS: %s", user, pass)
 }
