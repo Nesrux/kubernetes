@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "nesrux/goserver:v4"
+          image: "nesrux/goserver:v6.1"
+          volumeMounts:
+            - mountPath: "/server/myfamily"
+              name: config
           resources:
             limits:
               memory: "128Mi"
               cpu: "500m"
-          volumeMounts:
-            - mountPath: "/go/myfamily"
-              name: config
       volumes:
         - name: config
           configMap:

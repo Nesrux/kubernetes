@@ -22,9 +22,9 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Olá eu sou %s minha idade é %s", name, age)
 }
 func configMap(w http.ResponseWriter, r *http.Request) {
-	data, err := ioutil.ReadFile("myfamily/family.txt")
+	data, err := ioutil.ReadFile("./myfamily/family.txt")
 	if err != nil {
 		log.Fatalf("Erro ao ler o arquivo: ", err)
-		fmt.Fprintf(w, "minha familia %s.", string(data))
 	}
+	fmt.Fprintf(w, "minha familia %s.", string(data))
 }
