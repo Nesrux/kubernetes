@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "nesrux/goserver:v7"
+          image: "nesrux/goserver:v8"
           volumeMounts:
             - mountPath: "/server/myfamily"
               name: config
