@@ -16,16 +16,25 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "nesrux/goserver:v8"
-         # Helth cheker do kubernetes
-          livenessProbe:
+          image: "nesrux/goserver:v8.1"
+          #readinessProbe define se o pod ja esta pronto para
+          # receber trafego
+          readinessProbe:
             httpGet:
               path: /helth
               port: 8000
-            periodSeconds: 10
-            failureThreshold: 2
-            timeoutSeconds: 5
-            successThreshold: 1
+            periodSeconds: 3
+            failureThreshold: 1
+            initialDelaySeconds: 10
+          # Helth cheker do kubernetes
+          # livenessProbe:
+          #   httpGet:
+          #     path: /helth
+          #     port: 8000
+          #   periodSeconds: 10
+          #   failureThreshold: 2
+          #   timeoutSeconds: 5
+          #   successThreshold: 1
           volumeMounts:
             - mountPath: "/server/myfamily"
               name: config
