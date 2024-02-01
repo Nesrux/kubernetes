@@ -17,6 +17,7 @@ spec:
       containers:
         - name: goserver
           image: "nesrux/goserver:v8.2"
+
           #readinessProbe define se o pod ja esta pronto para
           # receber trafego
           readinessProbe:
@@ -25,8 +26,8 @@ spec:
               port: 8000
             periodSeconds: 3
             failureThreshold: 1
-            initialDelaySeconds: 10
-        
+            #initialDelaySeconds: 10
+
           # Helth cheker do kubernetes
           livenessProbe:
             httpGet:
@@ -36,18 +37,26 @@ spec:
             failureThreshold: 1
             timeoutSeconds: 5
             successThreshold: 1
-            initialDelaySeconds: 15
+            #initialDelaySeconds: 15
+          #startuoProbe é o que "ajuda atrabalhar com liveness e readness"
+          # ambos só irão iniciar depois que o startup "permitir", usando
+          # ele perde a necessidade de utilizar o initDelaySeconds
+          startupProbe:
+            httpGet:
+              path: /helth
+              port: 8000
+            periodSeconds: 3
+            failureThreshold: 10
 
-     
           volumeMounts:
             - mountPath: "/server/myfamily"
               name: config
-     
+
           resources:
             limits:
               memory: "128Mi"
               cpu: "500m"
-     
+
           envFrom:
             - configMapRef:
                 name: goserver-env
