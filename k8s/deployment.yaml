@@ -17,7 +17,13 @@ spec:
       containers:
         - name: goserver
           image: "nesrux/goserver:v8.2"
-
+          resources:
+            requests: # -> minimo que a aplicação precisa para rodar cada pod
+              cpu: 100m
+              memory: 20Mi
+            limits: # -> maximo que ele pode usar!
+              cpu: 500m
+              memory: 30Mi
           #readinessProbe define se o pod ja esta pronto para
           # receber trafego
           readinessProbe:
@@ -52,10 +58,6 @@ spec:
             - mountPath: "/server/myfamily"
               name: config
 
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
 
           envFrom:
             - configMapRef:
