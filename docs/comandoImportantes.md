@@ -67,3 +67,8 @@ trava os o terminal mostrando os pods em tempo real
 ```
 kubectl watch -n1 kubectl get pods
 ```
+
+ver os recursos que um pod esta utilizando
+```
+kubectl top pod <nome do pod>
+```
