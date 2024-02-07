@@ -72,3 +72,5 @@ ver os recursos que um pod esta utilizando
 ```
 kubectl top pod <nome do pod>
 ```
+
+aula 34
